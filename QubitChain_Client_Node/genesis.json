@@ -1,0 +1,23 @@
+{
+    "index": 0,
+    "timestamp": 1672531200.0,
+    "transactions": [
+        {
+            "from": "0x0000000000000000000000000000000000000000",
+            "to": "MyCryptoEnergy Holding",
+            "amount": 0.0,
+            "message": "Genesis Block Initial Supply"
+        }
+    ],
+    "previous_hash": "0" * 128,
+    "nonce": "GENESIS",
+    "owner": "MyCryptoEnergy Holding",
+    "consensus": "Q-PoW (Grover)",
+    "hashAlgorithm": "SHA-666",
+    "height": 0,
+    "monetary_params": {
+        "initial_reward": 50.0,
+        "supply_limit": 21000.0
+    },
+    "hash": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+}

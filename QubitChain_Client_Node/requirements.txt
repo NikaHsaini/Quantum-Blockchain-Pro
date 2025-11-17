@@ -1,0 +1,6 @@
+# Dépendances requises pour QubitChain
+websockets
+qiskit
+qiskit-aer
+PySide6
+# Note: Les dépendances standard comme hashlib, json, asyncio, uuid ne sont pas listées.
