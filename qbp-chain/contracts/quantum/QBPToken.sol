@@ -6,9 +6,8 @@ pragma solidity ^0.8.24;
  * @author Quantum Blockchain Pro Team
  * @notice The native utility token of the Quantum Blockchain Pro network.
  *
- * @dev QBP is an ERC-20 token with the following properties:
- *   - Total supply: 21,000,000 QBP (21 million, like Bitcoin)
- *   - Decimals: 18
+ * @dev QBP is an ERC-20 token with the following * Tokenomics:
+ *   - Total supply: 21,000 QBP (ultra-scarce, 1000x rarer than Bitcoin)*   - Decimals: 18
  *   - Initial price target: 100,000 EUR (institutional grade)
  *   - Utility: Gas fees, validator staking, QMaaS payment
  *   - Security: Transfers can optionally require ML-DSA signatures
@@ -34,7 +33,7 @@ contract QBPToken {
     string public constant symbol = "QBP";
     uint8 public constant decimals = 18;
 
-    uint256 public constant MAX_SUPPLY = 21_000_000 * 1e18; // 21 million QBP
+    uint256 public constant MAX_SUPPLY = 21_000 * 1e18; // 21,000 QBP — ultra-scarce supply
 
     uint256 public totalSupply;
     mapping(address => uint256) public balanceOf;
@@ -45,7 +44,7 @@ contract QBPToken {
     // ============================================================
 
     /// @notice Minimum transfer amount requiring PQ signature verification
-    uint256 public pqTransferThreshold = 1_000_000 * 1e18; // 1M QBP
+    uint256 public pqTransferThreshold = 100 * 1e18; // 100 QBP
 
     /// @notice Mapping of addresses that have enabled PQ-secured transfers
     mapping(address => bool) public pqSecured;
@@ -115,9 +114,9 @@ contract QBPToken {
         governance = _governance;
 
         // Mint initial allocations
-        uint256 ecosystemFund = (MAX_SUPPLY * 25) / 100;
-        uint256 publicSale = (MAX_SUPPLY * 15) / 100;
-        uint256 reserve = (MAX_SUPPLY * 10) / 100;
+        uint256 ecosystemFund = (MAX_SUPPLY * 25) / 100; // 5,250 QBP
+        uint256 publicSale = (MAX_SUPPLY * 15) / 100;    // 3,150 QBP
+        uint256 reserve = (MAX_SUPPLY * 10) / 100;        // 2,100 QBP
 
         // Ecosystem development fund
         _mint(_governance, ecosystemFund);

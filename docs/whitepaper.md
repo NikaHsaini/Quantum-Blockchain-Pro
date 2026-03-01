@@ -130,7 +130,7 @@ Ce système incite à la création d'une infrastructure de calcul quantique déc
 
 Le token QBP est au cœur de l'écosystème. Sa conception vise à créer une valeur durable et une économie saine.
 
-- **Offre Totale**: **21 000 000 QBP**, non-inflationniste à long terme.
+- **Offre Totale**: **21 000 QBP**, non-inflationniste à long terme. Cette rareté extrême (1000x plus rare que Bitcoin) est un pilier fondamental de la valeur du token.
 - **Utilité**:
     - **Frais de transaction**: Le QBP est utilisé pour payer le gaz sur le réseau.
     - **Staking**: Les validateurs doivent staker des QBP pour participer au consensus.
@@ -141,18 +141,18 @@ Le token QBP est au cœur de l'écosystème. Sa conception vise à créer une va
 
 | Allocation | Pourcentage | Description |
 | :--- | :--- | :--- |
-| **Récompenses de Bloc** | 30% | Distribuées aux validateurs sur plusieurs décennies. |
-| **Fonds de l'Écosystème** | 25% | Subventions pour les développeurs, partenariats, marketing. |
-| **Équipe et Conseillers** | 20% | Vesting sur 4 ans avec un cliff de 1 an. |
-| **Vente Publique** | 15% | Pour assurer une distribution large et financer le développement initial. |
-| **Réserve de la Fondation** | 10% | Pour la liquidité, les urgences et les opportunités stratégiques. |
+| **Récompenses de Bloc** | 30% | 6 300 QBP distribués aux validateurs sur plusieurs décennies. |
+| **Fonds de l'Écosystème** | 25% | 5 250 QBP pour subventions, partenariats, marketing. |
+| **Équipe et Conseillers** | 20% | 4 200 QBP, vesting sur 4 ans avec un cliff de 1 an. |
+| **Vente Publique** | 15% | 3 150 QBP pour assurer une distribution large et financer le développement. |
+| **Réserve de la Fondation** | 10% | 2 100 QBP pour la liquidité, les urgences et les opportunités stratégiques. |
 
 ### 3.1. Justification de la Valorisation Initiale
 
-Une valorisation cible de **100 000 € par QBP** lors de son introduction sur le marché est justifiée par une combinaison de rareté, d'utilité et de sécurité inégalée.
+Une valorisation cible de **100 000 € par QBP** lors de son introduction sur le marché est justifiée par une combinaison de rareté extrême, d'utilité et de sécurité inégalée.
 
-1.  **Actif Refuge Quantique**: QBP est conçu pour être un "or numérique" résistant à l'apocalypse quantique. Les détenteurs d'actifs de grande valeur chercheront à migrer vers des plateformes sécurisées, créant une demande massive.
-2.  **Rareté Programmée**: L'offre de 21 millions de tokens est un clin d'œil à Bitcoin et crée une perception de rareté et de valeur.
+1.  **Actif Refuge Quantique**: QBP est conçu pour être un “or numérique” résistant à l’apocalypse quantique. Les détenteurs d’actifs de grande valeur chercheront à migrer vers des plateformes sécurisées, créant une demande massive.
+2.  **Rareté Ultra-Programmée**: L’offre de **21 000 tokens seulement** est 1000 fois plus rare que Bitcoin (21 millions). À titre de comparaison, une capitalisation boursière de seulement 2,1 milliards d’euros implique déjà un prix de 100 000 € par token. La rareté extrême est un fondement structurel de la valeur.
 3.  **Valeur du Calcul Utile**: Contrairement au PoW de Bitcoin, le "mining" sur QBP produit des résultats de calcul ayant une valeur économique directe. Le marché du calcul haute performance (HPC) est estimé à plusieurs dizaines de milliards de dollars. Le QMaaS vise à capturer une partie de ce marché de manière décentralisée.
 4.  **Complexité et Barrière à l'Entrée**: Le développement d'une telle plateforme nécessite une expertise de pointe en cryptographie, en systèmes distribués et en physique quantique. Cette complexité crée une forte barrière à l'entrée pour les concurrents.
 5.  **Ciblage Institutionnel**: L'architecture, la gouvernance et la feuille de route de QBP sont conçues pour répondre aux exigences des institutions financières, des gouvernements et des grandes entreprises, qui seront les principaux adoptants de la technologie blockchain à l'avenir.

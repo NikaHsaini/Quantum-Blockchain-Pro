@@ -26,7 +26,7 @@ contract QPoARegistry {
     // ============================================================
 
     /// @notice Minimum stake required to become a validator (in QBP wei)
-    uint256 public constant MIN_STAKE = 100_000 * 1e18; // 100,000 QBP
+    uint256 public constant MIN_STAKE = 10 * 1e18; // 10 QBP (calibré pour une offre de 21 000 tokens)
 
     /// @notice Maximum number of validators
     uint256 public constant MAX_VALIDATORS = 21;

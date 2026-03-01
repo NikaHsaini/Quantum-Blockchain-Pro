@@ -30,7 +30,7 @@ QBP est construit sur une base de `go-ethereum`, en remplaçant et en étendant 
 | **Cryptographie** | ML-DSA (CRYSTALS-Dilithium) & ML-KEM (CRYSTALS-Kyber) | Intégration des algorithmes PQC finalisés par le NIST pour la signature des transactions (ML-DSA) et l'encapsulation de clés (ML-KEM), garantissant une sécurité à long terme contre les attaques quantiques. |
 | **Machine Virtuelle** | Quantum EVM (qEVM) | Une extension de l'EVM avec un nouvel ensemble d'opcodes (0xE0-0xEF) permettant aux smart contracts de créer, manipuler et exécuter des circuits quantiques. |
 | **Mining / Calcul** | Quantum as a Service (QMaaS) | Un marché décentralisé où les utilisateurs peuvent soumettre des tâches de calcul quantique (ex: optimisation, simulation) à un réseau de "mineurs" quantiques, qui sont récompensés en QBP. Le "mining" devient ainsi un calcul utile. |
-| **Token Natif** | QBP | Un token ERC-20 avec une offre maximale de 21 millions, utilisé pour le staking, les frais de gaz, et le paiement des services de calcul quantique. Les transferts de haute valeur peuvent être sécurisés par des signatures ML-DSA. |
+| **Token Natif** | QBP | Un token ERC-20 avec une offre maximale de **21 000 tokens** (ultra-rare, 1000x plus rare que Bitcoin), utilisé pour le staking, les frais de gaz, et le paiement des services de calcul quantique. Les transferts de haute valeur peuvent être sécurisés par des signatures ML-DSA. |
 
 ### 2.1. Consensus Quantum Proof-of-Authority (QPoA)
 
@@ -78,7 +78,7 @@ L'architecture de QBP ouvre la voie à une nouvelle génération d'applications 
 La valorisation cible de 100 000 € par QBP est ambitieuse et se justifie par les facteurs suivants :
 
 1.  **Sécurité à Long Terme**: QBP est l'une des seules plateformes conçues pour survivre à l'ère quantique, ce qui en fait un "coffre-fort" pour les actifs numériques de grande valeur.
-2.  **Offre Limitée**: Avec une offre maximale de 21 millions de tokens, QBP est un actif rare, similaire à Bitcoin.
+2.  **Offre Ultra-Limitée**: Avec une offre maximale de **21 000 tokens seulement**, QBP est 1000 fois plus rare que Bitcoin. Cette rareté extrême est un fondement structurel de la valeur du token.
 3.  **Utilité du Calcul Quantique**: Le QMaaS crée une valeur intrinsèque pour le token QBP, qui devient le carburant d'un marché de calcul quantique mondial et décentralisé. La demande pour ce calcul proviendra de secteurs valant des milliers de milliards de dollars (pharmacie, finance, logistique).
 4.  **Barrière Technologique à l'Entrée**: L'intégration de la cryptographie PQC, d'un consensus PoA avancé, et d'un qEVM fonctionnel représente une barrière technologique massive, difficile à répliquer.
 5.  **Positionnement Institutionnel**: L'architecture robuste, la gouvernance claire, et la conformité réglementaire visée positionnent QBP comme la plateforme de choix pour les institutions financières et les entreprises qui cherchent à entrer dans l'espace blockchain avec une perspective à long terme.

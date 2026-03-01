@@ -114,7 +114,7 @@ contract QuantumOracle {
     address public owner;
 
     /// @notice Minimum reward for a quantum job
-    uint256 public minJobReward = 100 * 1e18; // 100 QBP
+    uint256 public minJobReward = 1 * 1e18; // 1 QBP (calibré pour une offre de 21 000 tokens)
 
     /// @notice Maximum number of qubits per job
     uint256 public maxQubits = 30;
