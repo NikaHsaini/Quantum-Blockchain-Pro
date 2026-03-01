@@ -157,4 +157,4 @@ QUBITCOIN is an experimental project. It is not audited and should not be used i
 
 ---
 
-*Authored by Nika Hsaini — QUBITCOIN Foundation*
+*Authored by Nika Hsaini — SATOSHI 2.0 Foundation*
