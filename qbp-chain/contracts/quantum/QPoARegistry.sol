@@ -3,11 +3,11 @@ pragma solidity ^0.8.24;
 
 /**
  * @title QPoARegistry
- * @author Quantum Blockchain Pro Team
+ * @author Nika Hsaini — QUBITCOIN Foundation
  * @notice Manages the set of authorized validators for the QPoA consensus.
  *
  * @dev Validators must:
- *   1. Stake a minimum amount of QBP tokens
+ *   1. Stake a minimum amount of QBTC tokens
  *   2. Register their ML-DSA public key (post-quantum)
  *   3. Prove quantum capability by solving periodic challenges
  *   4. Maintain uptime and performance standards
@@ -18,15 +18,15 @@ pragma solidity ^0.8.24;
  *   - Quantum challenge failures result in slashing
  */
 
-import "./QBPToken.sol";
+import "./QBTCToken.sol";
 
 contract QPoARegistry {
     // ============================================================
     // Constants
     // ============================================================
 
-    /// @notice Minimum stake required to become a validator (in QBP wei)
-    uint256 public constant MIN_STAKE = 10 * 1e18; // 10 QBP (calibré pour une offre de 21 000 tokens)
+    /// @notice Minimum stake required to become a validator (in QBTC wei)
+    uint256 public constant MIN_STAKE = 10 * 1e18; // 10 QBTC (calibré pour une offre de 21 000 tokens)
 
     /// @notice Maximum number of validators
     uint256 public constant MAX_VALIDATORS = 21;
@@ -59,7 +59,7 @@ contract QPoARegistry {
     struct Validator {
         address addr;
         bytes mldsaPublicKey;       // ML-DSA-65 public key (1952 bytes)
-        uint256 stake;              // Staked QBP amount
+        uint256 stake;              // Staked QBTC amount
         uint256 since;              // Block number when activated
         uint256 lastBlock;          // Last block signed
         uint256 blocksProduced;     // Total blocks produced
@@ -90,7 +90,7 @@ contract QPoARegistry {
     // State Variables
     // ============================================================
 
-    QBPToken public immutable qbpToken;
+    QBTCToken public immutable qbtcToken;
     address public governance;
 
     mapping(address => Validator) public validators;
@@ -147,8 +147,8 @@ contract QPoARegistry {
     // Constructor
     // ============================================================
 
-    constructor(address _qbpToken, address _governance) {
-        qbpToken = QBPToken(_qbpToken);
+    constructor(address _qbtcToken, address _governance) {
+        qbtcToken = QBTCToken(_qbtcToken);
         governance = _governance;
     }
 
@@ -158,7 +158,7 @@ contract QPoARegistry {
 
     /**
      * @notice Apply to become a validator.
-     * @dev Requires staking MIN_STAKE QBP and providing an ML-DSA public key.
+     * @dev Requires staking MIN_STAKE QBTC and providing an ML-DSA public key.
      * @param mldsaPublicKey The validator's ML-DSA-65 public key (1952 bytes).
      */
     function applyForValidator(bytes calldata mldsaPublicKey) external {
@@ -168,7 +168,7 @@ contract QPoARegistry {
 
         // Transfer stake from applicant
         require(
-            qbpToken.transferFrom(msg.sender, address(this), MIN_STAKE),
+            qbtcToken.transferFrom(msg.sender, address(this), MIN_STAKE),
             "QPoARegistry: stake transfer failed"
         );
 
@@ -190,12 +190,12 @@ contract QPoARegistry {
 
     /**
      * @notice Add additional stake to strengthen validator position.
-     * @param amount Additional QBP to stake.
+     * @param amount Additional QBTC to stake.
      */
     function addStake(uint256 amount) external validatorExists(msg.sender) {
         require(amount > 0, "QPoARegistry: amount must be positive");
         require(
-            qbpToken.transferFrom(msg.sender, address(this), amount),
+            qbtcToken.transferFrom(msg.sender, address(this), amount),
             "QPoARegistry: stake transfer failed"
         );
         validators[msg.sender].stake += amount;
@@ -335,7 +335,7 @@ contract QPoARegistry {
                 validator.status = ValidatorStatus.Slashed;
 
                 // Burn slashed tokens
-                qbpToken.burn(slashAmount);
+                qbtcToken.burn(slashAmount);
 
                 emit ValidatorSlashed(validatorAddr, slashAmount, "Quantum challenge failure");
 
@@ -398,7 +398,7 @@ contract QPoARegistry {
         validators[msg.sender].status = ValidatorStatus.Inactive;
 
         require(
-            qbpToken.transfer(msg.sender, amount),
+            qbtcToken.transfer(msg.sender, amount),
             "QPoARegistry: stake withdrawal failed"
         );
 

@@ -257,9 +257,11 @@ async function main() {
     }
 }
 
-// Dummy pqcrypto library for demonstration
-// In a real implementation, this would be a WebAssembly module
-// compiled from a C/Rust library like liboqs.
+// Dummy pqcrypto library for demonstration.
+// In the production implementation, this is a WebAssembly module
+// compiled from the Go pqcrypto package (qbp-chain/crypto/pqcrypto),
+// exposing FALCON-1024, ML-DSA-65, ML-KEM and SHA-999 to the browser.
+// The Go WASM build is fully compatible with the Ethereum/go-ethereum stack.
 const pqcrypto_lib = {
     generateMLDSAKeyPair: () => ({ secret: "...", public: "..." }),
     getPublicKey: (privKey) => privKey.public,
