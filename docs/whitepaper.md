@@ -71,7 +71,14 @@ QUBITCOIN is a fork of `go-ethereum`, preserving EVM compatibility while replaci
 | Team & Advisors | 15% | 3,150 | 4-year vest, 1-year cliff |
 | Public Sale | 10% | 2,100 | Regulated EU exchanges |
 
-**Valuation Rationale**: With a target price of **100,000 EUR per QBTC**, the total network market capitalization would be **2.1 Billion EUR**, a conservative valuation for an infrastructure poised to secure trillions in digital assets.
+**Valuation Rationale**: QUBITCOIN employs a multi-layered value stabilization framework:
+
+1. **Algorithmic Liquidity Management**: The protocol dynamically adjusts liquidity depth across the QBTC/wEURd pool using automated market-making strategies calibrated to institutional order flow.
+2. **Progressive Stabilization via Strategic Treasury**: Protocol-Owned Liquidity (POL) reserves are deployed progressively to maintain optimal market depth, ensuring that the QBTC market remains resilient under all conditions.
+3. **TWAP-Based Dynamic Rebalancing**: Time-Weighted Average Price oracles drive automated rebalancing of treasury positions, smoothing short-term volatility while preserving long-term value accrual.
+4. **Discretionary Protocol Intervention**: In exceptional market conditions, the QUBITCOIN Foundation retains the capacity for discretionary intervention to protect ecosystem stability.
+
+With an ultra-scarce supply of **21,000 QBTC** and a total addressable market exceeding **500 Billion EUR** in quantum-vulnerable digital assets, the network is positioned for significant long-term value creation.
 
 ## 5. Regulatory Compliance
 

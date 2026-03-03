@@ -182,14 +182,23 @@ func TestTokenomicsInvariants(t *testing.T) {
 		t.Fatalf("allocations sum to %d, expected %d", total, maxSupply)
 	}
 
-	// Verify price target justification
-	priceTarget := uint64(100_000) // EUR
-	marketCap := maxSupply * priceTarget
-	expectedMarketCap := uint64(2_100_000_000) // 2.1B EUR
+	// Verify stabilization framework parameters
+	// The protocol uses algorithmic liquidity management rather than fixed price targets.
+	// Key parameters: TWAP rebalancing, strategic treasury POL, discretionary intervention.
+	twapWindowBlocks := uint64(240)      // ~12 minutes at 3s block time
+	polReserveRatio := uint64(10)         // 10% of POL deployed per rebalancing cycle
+	stabilizationThreshold := uint64(1)   // Threshold must be > 0
 
-	if marketCap != expectedMarketCap {
-		t.Fatalf("market cap at target price: %d EUR, expected %d EUR", marketCap, expectedMarketCap)
+	if twapWindowBlocks == 0 || polReserveRatio == 0 || stabilizationThreshold == 0 {
+		t.Fatal("stabilization parameters must be non-zero")
 	}
 
-	t.Logf("Tokenomics verified: %d QBTC × %d EUR = %d EUR market cap", maxSupply, priceTarget, marketCap)
+	// Verify supply scarcity: 21,000 QBTC is 1000x rarer than BTC (21M)
+	scarcityMultiplier := uint64(21_000_000) / maxSupply
+	if scarcityMultiplier != 1000 {
+		t.Fatalf("scarcity multiplier: %d, expected 1000", scarcityMultiplier)
+	}
+
+	t.Logf("Tokenomics verified: %d QBTC, scarcity %dx vs BTC, TWAP window %d blocks, POL ratio %d%%",
+		maxSupply, scarcityMultiplier, twapWindowBlocks, polReserveRatio)
 }

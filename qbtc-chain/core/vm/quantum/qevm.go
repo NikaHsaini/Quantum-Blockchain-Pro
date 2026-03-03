@@ -32,8 +32,8 @@ import (
 	"math/big"
 	"sync"
 
-	qminer "github.com/NikaHsaini/Quantum-Blockchain-Pro/qbp-chain/miner/quantum"
-	"github.com/NikaHsaini/Quantum-Blockchain-Pro/qbp-chain/crypto/pqcrypto"
+	qminer "github.com/NikaHsaini/Quantum-Blockchain-Pro/qbtc-chain/miner/quantum"
+	"github.com/NikaHsaini/Quantum-Blockchain-Pro/qbtc-chain/crypto/pqcrypto"
 )
 
 // ============================================================

@@ -24,7 +24,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/NikaHsaini/Quantum-Blockchain-Pro/qbp-chain/crypto/pqcrypto"
+	"github.com/NikaHsaini/Quantum-Blockchain-Pro/qbtc-chain/crypto/pqcrypto"
 )
 
 // ============================================================

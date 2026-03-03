@@ -174,7 +174,7 @@ Ce projet est une initiative open source ambitieuse visant à construire l'infra
 QUBITCOIN est la première blockchain conçue pour une intégration native avec l'**Euro Numérique** de la Banque Centrale Européenne. Notre dossier de compatibilité CBDC, de niveau institutionnel, assure une interopérabilité totale avec l'infrastructure financière européenne.
 
 -   **Pont Euro Numérique** : Un bridge bidirectionnel permet de convertir l'Euro Numérique en un token ERC-20 conforme (wEURd) sur notre réseau.
--   **Pool de Liquidités QBTC/EUR€** : Une pool de liquidités de plusieurs millions d'euros, soutenue par une liquidité détenue par le protocole (POL), garantit un prix plancher et une faible volatilité pour le QBTC.
+-   **Pool de Liquidités QBTC/EUR€** : Une pool de liquidités institutionnelle soutenue par une trésorerie stratégique (POL), intégrant un mécanisme de gestion algorithmique de liquidité, un rééquilibrage dynamique basé sur TWAP, et une stabilisation progressive pour garantir une profondeur de marché optimale.
 -   **Conformité Totale** : L'architecture est entièrement conforme aux réglementations **MiCA, eIDAS 2.0 et DORA**.
 
 Pour plus de détails, consultez notre [**dossier de compatibilité CBDC complet**](docs/cbdc/README.md).

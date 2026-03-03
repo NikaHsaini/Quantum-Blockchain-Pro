@@ -11,7 +11,7 @@ pragma solidity ^0.8.24;
  *   Tokenomics:
  *   - Total supply: 21,000 QBTC (ultra-scarce, 1000x rarer than Bitcoin)
  *   - Decimals: 18
- *   - Initial price target: 100,000 EUR (institutional grade)
+ *   - Valuation: Algorithmic liquidity management with strategic treasury stabilization
  *   - Utility: Gas fees, validator staking, QMaaS payment, B2B SaaS access
  *
  *   Post-Quantum Security (Crypto-Agile Architecture):
@@ -525,8 +525,52 @@ contract QBTCToken is IERC20, ReentrancyGuard {
     }
 
     // ============================================================
+    // Burn Functions
+    // ============================================================
+
+    /**
+     * @notice Burn tokens from the caller's balance.
+     * @dev Reduces totalSupply. Used by QPoARegistry for slashing and by
+     *      EuroDigitalBridge for wEURd redemption flows.
+     * @param amount The amount of QBTC to burn (18 decimals).
+     */
+    function burn(uint256 amount) external nonReentrant {
+        _burn(msg.sender, amount);
+    }
+
+    /**
+     * @notice Burn tokens from a specified account (requires allowance).
+     * @dev The caller must have sufficient allowance from `account`.
+     * @param account The account whose tokens will be burned.
+     * @param amount The amount of QBTC to burn (18 decimals).
+     */
+    function burnFrom(address account, uint256 amount) external nonReentrant {
+        uint256 currentAllowance = allowance[account][msg.sender];
+        if (currentAllowance < amount) {
+            revert QBTC__InsufficientAllowance(msg.sender, currentAllowance, amount);
+        }
+        unchecked {
+            allowance[account][msg.sender] = currentAllowance - amount;
+        }
+        _burn(account, amount);
+    }
+
+    // ============================================================
     // Internal Functions
     // ============================================================
+
+    function _burn(address from, uint256 amount) internal {
+        if (from == address(0)) revert QBTC__ZeroAddress();
+        uint256 fromBalance = balanceOf[from];
+        if (fromBalance < amount) {
+            revert QBTC__InsufficientBalance(from, fromBalance, amount);
+        }
+        unchecked {
+            balanceOf[from] = fromBalance - amount;
+        }
+        totalSupply -= amount;
+        emit Transfer(from, address(0), amount);
+    }
 
     function _transfer(address from, address to, uint256 amount) internal {
         if (from == address(0)) revert QBTC__ZeroAddress();

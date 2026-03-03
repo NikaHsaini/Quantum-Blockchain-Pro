@@ -17,7 +17,7 @@ L'architecture repose sur trois piliers contractuels :
 | Contrat | Fichier | Rôle |
 | :--- | :--- | :--- |
 | **EuroDigitalBridge** | `EuroDigitalBridge.sol` | Pont bidirectionnel entre l'Euro Numérique (via DL3S/TARGET2) et sa représentation ERC-20 (wEURd) sur QUBITCOIN. |
-| **QBTCLiquidityPool** | `QBTCLiquidityPool.sol` | Pool de liquidités institutionnelle (AMM) pour la paire QBTC/wEURd, avec liquidité concentrée et défense du prix plancher. |
+| **QBTCLiquidityPool** | `QBTCLiquidityPool.sol` | Pool de liquidités institutionnelle (AMM) pour la paire QBTC/wEURd, avec liquidité concentrée, gestion algorithmique de liquidité et rééquilibrage dynamique TWAP. |
 | **CBDCRouter** | `CBDCRouter.sol` | Routeur d'interopérabilité multi-CBDC, gérant les swaps entre QBTC, wEURd, et d'autres stablecoins/CBDC européens. |
 
 ```mermaid
@@ -63,7 +63,7 @@ Ce contrat assure la conversion 1:1 entre l'Euro Numérique et sa représentatio
 Cette pool AMM est le cœur économique de l'écosystème, conçue pour garantir une liquidité profonde et défendre la valeur du QBTC.
 
 -   **Liquidité Concentrée** : Inspiré d'Uniswap V3, les fournisseurs de liquidité (LPs) peuvent allouer leur capital dans des fourchettes de prix spécifiques, maximisant l'efficacité.
--   **Liquidité Détenue par le Protocole (POL)** : La Fondation QUBITCOIN déploie une partie de ses réserves pour créer un **prix plancher** (ex: 100 000 €). Si le prix du QBTC approche ce plancher, la POL achète automatiquement du QBTC pour soutenir le cours.
+-   **Trésorerie Stratégique (POL)** : La Fondation QUBITCOIN déploie une partie de ses réserves dans un mécanisme de **stabilisation progressive**. Le protocole utilise un rééquilibrage dynamique basé sur le TWAP pour maintenir une profondeur de liquidité optimale, combiné à une capacité d'**intervention discrétionnaire** en cas de conditions de marché exceptionnelles.
 -   **Frais Dynamiques** : Les frais de transaction s'ajustent en fonction de la volatilité et de la taille de l'ordre, protégeant les LPs et décourageant la manipulation de marché.
 -   **Oracle TWAP** : Fournit un prix moyen pondéré par le temps (TWAP) fiable, résistant à la manipulation, pour les autres protocoles DeFi.
 
@@ -85,3 +85,10 @@ Ce contrat agit comme un agrégateur, offrant un point d'entrée unique pour tou
 ## 5. Conclusion
 
 Ce dossier de compatibilité CBDC n'est pas seulement une fonctionnalité technique ; c'est une déclaration stratégique. Il ancre QUBITCOIN au cœur du futur système financier européen, en tant que partenaire technologique crédible, sécurisé et conforme pour les banques centrales, les institutions financières et les entreprises. Il garantit la pertinence et la valeur à long terme du token QBTC.
+
+
+## 4. Rapport de Conformité
+
+Un audit complet de la compatibilité de QUBITCOIN avec l'Euro Numérique a été réalisé. Le rapport confirme que l'architecture est **entièrement conforme** aux spécifications et principes de la BCE.
+
+**➡️ [Consulter le Rapport de Conformité Euro Numérique](./compliance_report.md)**

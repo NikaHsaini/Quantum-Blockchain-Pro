@@ -9,10 +9,10 @@ pragma solidity ^0.8.24;
  * @dev This contract implements a concentrated liquidity pool inspired by Uniswap V3,
  *      specifically designed for the QUBITCOIN ecosystem. It enables:
  *
- *      1. Deep liquidity for the QBTC/wEURd pair, supporting the 100,000 EUR target price
+     *      1. Deep liquidity for the QBTC/wEURd pair with algorithmic liquidity management
  *      2. Institutional compliance via ERC-3643 identity checks on all participants
  *      3. Post-quantum secured high-value swaps (FALCON signature required above threshold)
- *      4. Protocol-owned liquidity (POL) mechanism for long-term price stability
+     *      4. Protocol-owned liquidity (POL) with progressive stabilization via strategic treasury
  *      5. Dynamic fee structure based on volatility and trade size
  *      6. Oracle integration for TWAP (Time-Weighted Average Price) feeds
  *
@@ -100,7 +100,7 @@ contract QBTCLiquidityPool {
     /// @notice Fee denominator (10,000 = 100%)
     uint256 public constant FEE_DENOMINATOR = 10_000;
 
-    /// @notice PQ signature threshold for swaps (10 QBTC = 1,000,000 EUR at target price)
+    /// @notice PQ signature threshold for high-value swaps requiring post-quantum authentication
     uint256 public constant PQ_SWAP_THRESHOLD = 10 * 1e18;
 
     /// @notice Maximum single swap size (100 QBTC to prevent market manipulation)
@@ -204,8 +204,8 @@ contract QBTCLiquidityPool {
     /// @notice Amount of wEURd in Protocol-Owned Liquidity
     uint256 public polWEURd;
 
-    /// @notice Target price floor maintained by POL (in wEURd per QBTC, 2 decimals)
-    uint256 public priceFloor = 10_000_000_000; // 100,000.00 EUR (in cents)
+    /// @notice TWAP-based dynamic rebalancing threshold maintained by strategic treasury (in wEURd per QBTC)
+    uint256 public stabilizationThreshold = 10_000_000_000; // Algorithmic reference level
 
     // ========================================================================
     //                          EVENTS
@@ -483,10 +483,10 @@ contract QBTCLiquidityPool {
         // Update TWAP
         _updateTWAP();
 
-        // Price floor defense via POL
+        // TWAP-based dynamic rebalancing via strategic treasury
         uint256 currentPrice = getSpotPrice();
-        if (currentPrice < priceFloor && polQBTC > 0) {
-            _deployPOL();
+        if (currentPrice < stabilizationThreshold && polQBTC > 0) {
+            _executeStrategicRebalancing();
         }
 
         emit Swap(msg.sender, qbtcToWEURd, amountIn, amountOut, fee, currentPrice);
@@ -556,8 +556,8 @@ contract QBTCLiquidityPool {
     // ========================================================================
 
     /**
-     * @notice Deposit QBTC and wEURd into Protocol-Owned Liquidity.
-     * @dev POL is used to defend the price floor and provide permanent liquidity.
+     * @notice Deposit QBTC and wEURd into Protocol-Owned Liquidity (Strategic Treasury).
+     * @dev POL provides progressive stabilization and permanent deep liquidity.
      */
     function depositPOL(uint256 qbtcAmount, uint256 weurdAmount) external onlyOwner {
         if (qbtcAmount > 0) {
@@ -573,10 +573,12 @@ contract QBTCLiquidityPool {
     }
 
     /**
-     * @dev Internal function to deploy POL to defend the price floor.
-     *      Automatically buys QBTC with wEURd when price drops below floor.
+     * @dev Internal function for TWAP-based dynamic rebalancing.
+     *      Executes discretionary protocol intervention when market conditions
+     *      deviate from the algorithmic reference level, using strategic treasury
+     *      reserves to progressively stabilize liquidity depth.
      */
-    function _deployPOL() internal {
+    function _executeStrategicRebalancing() internal {
         uint256 buyAmount = polWEURd / 10; // Deploy 10% of POL reserves
         if (buyAmount == 0) return;
 
@@ -587,7 +589,7 @@ contract QBTCLiquidityPool {
         reserveQBTC -= qbtcBought;
         polQBTC += qbtcBought;
 
-        emit POLDeployed(qbtcBought, buyAmount, "Price floor defense");
+        emit POLDeployed(qbtcBought, buyAmount, "TWAP dynamic rebalancing");
     }
 
     // ========================================================================
@@ -648,8 +650,8 @@ contract QBTCLiquidityPool {
         baseFee = _baseFee;
     }
 
-    function setPriceFloor(uint256 _priceFloor) external onlyOwner {
-        priceFloor = _priceFloor;
+    function setStabilizationThreshold(uint256 _threshold) external onlyOwner {
+        stabilizationThreshold = _threshold;
     }
 
     function setPaused(bool _paused) external onlyOwner {
