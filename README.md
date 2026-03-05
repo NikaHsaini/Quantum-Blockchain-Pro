@@ -167,7 +167,7 @@ Ce projet est une initiative open source ambitieuse visant à construire l'infra
 -   **Levée de Fonds (Seed & Série A)** : Nous sommes actuellement en phase de discussion avec des investisseurs stratégiques pour une levée de fonds Seed de 5 à 7 millions d'euros. Si vous êtes un fonds de capital-risque (VC) spécialisé dans la deeptech, la blockchain ou la cybersécurité, contactez-nous pour recevoir notre pitch deck complet.
 -   **Audit Technique & Sécurité** : Nous recherchons des partenaires pour des audits de sécurité formels et continus. Si votre entreprise est spécialisée dans l'audit de smart contracts et de protocoles blockchain, nous vous invitons à nous contacter.
 
-**Contact** : Nika Hsaini, Fondateur — [nika.hsaini@qubitcoin.foundation](mailto:nika.hsaini@qubitcoin.foundation)
+**Contact** : Nika Hsaini, Fondateur — +33749163779
 
 ## Compatibilité Euro Numérique (CBDC)
 
